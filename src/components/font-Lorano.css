@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Lorano";
+  src: url("./fonts/Lorano-Regular.otf");
+}
+@font-face {
+  font-family: "Lorano";
+  src: url("./fonts/Lorano-SemiBold.otf");
+  font-weight:bold;
+}
+@font-face {
+  font-family: "Lorano";
+  src: url("./fonts/Lorano-Thin.otf");
+  font-weight:lighter;
+}

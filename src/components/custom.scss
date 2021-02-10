@@ -1,0 +1,263 @@
+
+@import './font-Lorano.css';
+@import './font-SpaceMono.css';
+$color-1: #B2FC40;
+$color-2: #DB1F48;
+$color-3: #01949A;
+$color-4: #E5DDC8;
+
+
+h1, h2, h3 {
+  font-family: "Lorano", sans-serif;
+}
+h1 {
+  font-weight:bold;
+  letter-spacing:2px;
+}
+h2 {
+  font-weight:bold;
+  font-size:1.8rem;
+  letter-spacing:2px;
+}
+
+
+*{
+  z-index:10;
+  font-family: "Space Mono", sans-serif;
+}
+#wrapper {
+  height:100vh;
+  width:100vw;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+  overflow:hidden;
+  background:url('../images/smalldash.png');
+  background-size:4rem;
+  background-position:right;
+}
+#MainLogo {
+height:22rem;
+width:22rem;
+color:black;
+display:flex;
+align-items:center;
+// background-color:$color-1;
+border-radius:20px;
+// padding:2rem;
+background-color:white;
+border:3px solid #000;
+border-radius:100%;
+box-shadow:-5px 5px 0 #000;
+}
+#MainLogo h1 {
+  // margin-left:1rem;
+  font-size:2.8rem;
+  margin:auto;
+}
+.logoShapes {
+  min-width:4rem;
+  min-height:4rem;
+  // height:100%;
+  position:relative;
+  top:2rem;
+  left:1rem;
+  // display:inline-block;
+  transform-origin:center;
+  animation-name: mainLogoSpin;
+  animation-duration: 8s;
+  animation-delay: 0s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+
+  .logocircle {
+    border-radius:100%;
+    width:15%;
+    height:15%;
+    position:absolute;
+    background-color:#000;
+    &:nth-child(1) {
+    left:0;
+    top:40%;
+
+    transform:scale(2.8);
+    }
+    &:nth-child(2) {
+    left:50%;
+    bottom:10%;
+
+    transform:scale(1.8);
+    }
+    &:nth-child(3) {
+    right:0;
+    top:40%;
+    transform:scale(1.1);
+    }
+  }
+
+  &:nth-of-type(2){
+    top:-2rem;
+    left:-1rem;
+    animation-name: mainLogoSpin2;
+  }
+
+}
+
+
+@keyframes mainLogoSpin {
+  0% {
+  opacity:0;
+    transform:rotate(-110deg);
+  }
+  30% {
+    opacity:1;
+    transform:rotate(25deg);
+  }
+  70% {
+  opacity:1;
+    transform:rotate(25deg);
+  }
+  90% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+    transform:rotate(70deg);
+  }
+}
+@keyframes mainLogoSpin2 {
+  0% {
+  opacity:0;
+    transform:rotate(-320deg);
+  }
+  30% {
+    opacity:1;
+    transform:rotate(-155deg);
+  }
+  70% {
+  opacity:1;
+    transform:rotate(-155deg);
+  }
+  90% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+    transform:rotate(-70deg);
+  }
+}
+
+header {
+  // background-color:transparent;
+  background:transparent;
+  padding-left:10%;
+  padding-top:10%;
+}
+body {
+  // background-color:$color-1!important;
+
+}
+main {
+padding:0 10%;
+max-width:1280px;
+margin:0 auto;
+}
+.block {
+  background-color:white!important;
+  background:white;
+  border:2px solid #000;
+  box-shadow:-8px 8px 0 #000;
+  border-radius:12px;
+  padding:1.5rem;
+  margin-top:4rem;
+  margin-bottom:2rem;
+  opacity:1;
+  transition: opacity 0.3s;
+}
+.hide {
+  opacity:0;
+}
+.swatch{
+  width:80%;
+  height:8rem;
+  display:block;
+  border:2px solid #000;
+  margin:0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
+}
+.colorSwatch, .shadeSwatch{
+  width:80%;
+  height:8rem;
+  border:2px solid #000;
+  margin:0 auto;
+  transition: background-color 0.4s;
+}
+.colorSwatch {
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+
+}
+.shadeSwatch {
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+  margin-top:-2px;
+  height:4rem;
+}
+.swatchlabel {
+  color:#666;
+  letter-spacing:1px;
+  margin:2rem 1rem 1rem;
+  font-family: "Space Mono", sans-serif;
+  letter-spacing:2px;
+  padding-bottom:2rem;
+  border-bottom:2px dashed #000;
+}
+.shadelabel{
+  font-size:1.2rem;
+  color:#999;
+}
+.swatchText {
+  background-color:#f5f5f5;
+  border:none;
+  font-size:1.9rem;
+  max-width:80%;
+}
+.button {
+  width:60%;
+  margin:1rem auto;
+  position:relative;
+  left:20%;
+  background-color:white;
+  border-radius:10px;
+  border:2px solid #000;
+  box-shadow:-5px 5px 0 #333;
+  padding:1rem;
+  transition:background-color 0.2s;
+  &:hover {
+    background-color:#eee;
+    cursor:pointer;
+  }
+  &:focus {
+    outline:4px dashed #666;
+    outline-offset:-6px;
+  }
+}
+.block .column {
+  margin-bottom:3rem;
+}
+.clipboard {
+  cursor:pointer;
+  height:1.6rem;
+  fill:#999;
+  margin-left:1rem;
+  &:hover {
+    fill:#bbb;
+  }
+}
