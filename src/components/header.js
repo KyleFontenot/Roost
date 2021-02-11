@@ -9,13 +9,13 @@ import './layout.scss'
 import './custom.scss'
 
 
-const Header = ({primaryColor}) => {
+const Header = (primaryColor) => {
 
   return (
     <>
     <SEO/>
     <header>
-      <div id="MainLogo" style={{backgroundColor: {primaryColor}}}>
+      <div id="MainLogo" style={{backgroundColor: primaryColor}}>
 
         <div className="logoShapes">
           <div className="logocircle"></div>

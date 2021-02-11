@@ -21,6 +21,41 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
+
+        <script
+  dangerouslySetInnerHTML={{
+    __html: `
+
+
+    const showElementsCutoff = window.innerHeight * 0.7;
+    const containerLevits = document.getElementsByClassName('block');
+    let domOffsets = [];
+    window.setTimeout(() => {
+      for (let i = 0;i < containerLevits.length; i++){
+        domOffsets.push(containerLevits[i].offsetTop);
+      }
+    },1);
+
+    window.addEventListener("scroll", function scrollBehavior() {
+      let tick = window.scrollY;
+          for (let j = 0; j < domOffsets.length; j++) {
+
+            if (tick >= domOffsets[j] - showElementsCutoff){
+              containerLevits[j].classList.remove('hide');
+            }
+            else if (tick < domOffsets[j] - 50){
+              containerLevits[j].classList.add('hide');
+            }
+            else if (tick + showElementsCutoff < domOffsets[j] - 50){
+              containerLevits[j].classList.add('hide');
+            }
+          }
+    });
+
+
+`
+  }}
+/>
       </body>
 
     </html>
@@ -35,13 +70,3 @@ HTML.propTypes = {
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
 }
-
-
-// <script dangerouslySetInnerHTML={{
-//     __html: `
-//
-//
-//
-//
-//     `,
-//   }} />
