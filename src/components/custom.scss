@@ -14,17 +14,26 @@ h1 {
 }
 h2 {
   font-weight:bold;
-  font-size:1.8rem;
+  font-size:1.3rem;
   letter-spacing:2px;
 }
 
-
+body{
+  scroll-behavior:smooth;
+  // max-width:100%;
+  overflow:hidden;
+}
 *{
   z-index:10;
   font-family: "Space Mono", sans-serif;
+  font-size:0.8rem;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 #wrapper {
-  height:100vh;
+  height:110vh;
   width:100vw;
   position:fixed;
   top:0;
@@ -35,15 +44,38 @@ h2 {
   background-size:4rem;
   background-position:right;
 }
+#wrapperAccent::before, #wrapperAccent::after {
+  content: "";
+  position:absolute;
+  top:0;
+  right:0;
+  // border-right:101.5vw solid black;
+  border-right:clamp(10rem,101vw,1880px) solid black;
+  border-top:0px solid white;
+  border-bottom:83vh solid transparent;
+  width:0;
+  height:0;
+  z-index:3;
+overflow:hidden;
+}
+#wrapperAccent::after {
+
+  // border-right:100.5vw solid white;
+  border-right:clamp(10rem,100.5vw,1880px) solid white;
+  border-top:0px solid white;
+  border-bottom:80vh solid transparent;
+  width:0;
+  height:0;
+  z-index:4;
+}
 #MainLogo {
 height:22rem;
 width:22rem;
+margin:0 auto;
 color:black;
 display:flex;
 align-items:center;
-// background-color:$color-1;
 border-radius:20px;
-// padding:2rem;
 background-color:white;
 border:3px solid #000;
 border-radius:100%;
@@ -147,17 +179,11 @@ box-shadow:-5px 5px 0 #000;
 }
 
 header {
-  // background-color:transparent;
   background:transparent;
-  padding-left:10%;
-  padding-top:10%;
-}
-body {
-  // background-color:$color-1!important;
-
+  height:90vh;
 }
 main {
-padding:0 10%;
+padding:0 3% 0 calc(3% + 8px);
 max-width:1280px;
 margin:0 auto;
 }
@@ -211,15 +237,16 @@ margin:0 auto;
 .swatchlabel {
   color:#666;
   letter-spacing:1px;
-  margin:2rem 1rem 1rem;
+  margin:2rem auto 1rem;
   font-family: "Space Mono", sans-serif;
   letter-spacing:2px;
   padding-bottom:2rem;
   border-bottom:2px dashed #000;
+  max-width:13rem;
 }
 .shadelabel{
   font-size:1.2rem;
-  color:#999;
+  color:#bbb;
 }
 .swatchText {
   background-color:#f5f5f5;
@@ -248,7 +275,7 @@ margin:0 auto;
   }
 }
 .block .column {
-  margin-bottom:3rem;
+  margin-bottom:1rem;
 }
 .clipboard {
   cursor:pointer;
@@ -267,8 +294,11 @@ margin:0 auto;
   height:2rem;
   width:2rem;
   margin-left:1rem;
-  position:relative;
+  position:absolute;
   // display:block;
+  &:hover {
+    fill:#777;
+  }
 }
 .clipboardConfirmation {
   content: "Copied!";
@@ -277,10 +307,10 @@ margin:0 auto;
   align-items:center;
   justify-content:center;
   top:0rem;
-  left:110%;
+  left:120%;
   z-index:20;
   right:100%;
-  background-color:#FDE7A8;
+  background-color:#FDEEC2;
   min-width:5rem;
   height:2rem;
   font-size:0.8rem;
@@ -290,4 +320,83 @@ margin:0 auto;
   margin:auto;
   opacity:0;
   transition:opacity 0.2s;
+}
+.subheader{
+  font-size:4rem;
+  padding:1.5rem 1.5rem 0;
+  line-height: 5rem;
+  width:100%;
+  max-width:480px;
+  margin:0 auto;
+  align-items:center;
+  transition:width 0.5s, max-width 0.5s;
+  & p {
+    visibility:hidden;
+    height:0;
+    padding:0;
+    text-indent:2rem;
+    line-height:2.4rem;
+    font-size:0.9rem;
+    opacity:0;
+    border-top:2px dashed #fff;
+    transition: opacity 0.2s, border-top 0.3s;
+  }
+}
+.subheaderExpand {
+  width:100%;
+  max-width:100%;
+  font-size:4rem;
+
+  & .subheaderArrows {
+    transform:rotate(180deg);
+  }
+  & p {
+    height:100%;
+    visibility:visible;
+    padding:1.5rem 2.5rem;
+    opacity:1;
+    border-top: 2px dashed #000;
+    margin:1rem auto 2rem;
+    max-width:800px;
+  }
+}
+.subheaderArrows {
+  font-size:4rem;
+  transition: transform 0.5s;
+}
+.infobox {
+  display:flex;
+  justify-content:space-around;
+  cursor:pointer;
+}
+.speciali {
+  font-size:2rem;
+  border:2px solid #000;
+  box-shadow:-4px 4px 0 #000;
+  border-radius:100%;
+  width:4rem;
+  height:4rem;
+  line-height:3.7rem;
+  color:black;
+  text-align:center;
+  background-color:white;
+  position:relative;
+  &:after {
+    content: " ";
+    position:absolute;
+    left:0;
+    border-radius:100%;
+    box-shadow:2px -4px 0px #666 inset;
+    width:100%;
+    height:100%;
+  }
+  &:before {
+    content: " ";
+    position:absolute;
+    left:0;
+    border-radius:100%;
+    box-shadow:0px 0px 4px 4px  #eee inset;
+    width:100%;
+    height:100%;
+  }
 }
