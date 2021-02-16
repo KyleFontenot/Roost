@@ -21,7 +21,8 @@ h2 {
 body{
   scroll-behavior:smooth;
   // max-width:100%;
-  overflow:hidden;
+  // overflow:hidden;
+  width:100%;
 }
 *{
   z-index:10;
@@ -29,12 +30,12 @@ body{
   font-size:0.8rem;
 }
 html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+
+  max-width: 100%;
 }
 #wrapper {
-  height:110vh;
-  width:100vw;
+  height:110%;
+  width:100%;
   position:fixed;
   top:0;
   left:0;
@@ -44,29 +45,36 @@ html, body {
   background-size:4rem;
   background-position:right;
 }
-#wrapperAccent::before, #wrapperAccent::after {
-  content: "";
-  position:absolute;
-  top:0;
-  right:0;
-  // border-right:101.5vw solid black;
-  border-right:clamp(10rem,101vw,1880px) solid black;
-  border-top:0px solid white;
-  border-bottom:83vh solid transparent;
+#wrapperAccent::before, #wrapperAccent::after, {
+  content:" ";
   width:0;
   height:0;
+  position:absolute;
+  top:-2rem;
+  right:0;
+  // overflow:hidden;
+}
+#wrapperAccent::before {
+  border-top:0px solid white;
+  border-right:101.5% solid black;
+  border-right:23rem solid black;
+  border-left:0px solid black;
+  border-bottom:83% solid transparent;
+  border-bottom:25rem solid transparent;
   z-index:3;
-overflow:hidden;
 }
 #wrapperAccent::after {
-
-  // border-right:100.5vw solid white;
-  border-right:clamp(10rem,100.5vw,1880px) solid white;
+  // border-right:100.5% solid white;
   border-top:0px solid white;
-  border-bottom:80vh solid transparent;
-  width:0;
-  height:0;
-  z-index:4;
+  border-right:22.8rem solid white;
+  border-bottom:24rem solid transparent;
+  // border-right:clamp(10rem,100.5%,1880px) solid white!important;
+  // border-right-width:100.5%!important;
+
+
+  // border-bottom:80% solid transparent;
+  border-left:0 solid transparent;
+  z-index:6;
 }
 #MainLogo {
 height:22rem;
@@ -181,6 +189,7 @@ box-shadow:-5px 5px 0 #000;
 header {
   background:transparent;
   height:90vh;
+  justify-content:center;
 }
 main {
 padding:0 3% 0 calc(3% + 8px);
@@ -253,6 +262,43 @@ margin:0 auto;
   border:none;
   font-size:1.9rem;
   max-width:80%;
+  width:100%;
+}
+.swatchFont {
+  background-color:white;
+  font-size:1.5rem;
+  display:flex;
+  flex-flow:column;
+  align-items:space-around;
+  align-content:space-around;
+  width:90%;
+  height:100%;
+  & span {
+    font-size:0.9rem;
+  }
+  & > span:nth-of-type(1){
+    font-size:1.3rem;
+    display:inline-block;
+    // width:100%;
+    margin-bottom:1rem;
+    padding-bottom:1rem;
+    border-bottom:2px dashed #000;
+  }
+}
+.swatchFontHeader {
+  font-size:1.5rem;
+  font-weight:700;
+  font-weight:800;
+  font-weight:bold;
+}
+.swatchFontDisplay{
+  flex:1 1 60%;
+  border:none;
+  background-color:#f9f9f9;
+  border-radius:20px;
+  & > * {
+    border:none;
+  }
 }
 .button {
   width:60%;
@@ -280,7 +326,7 @@ margin:0 auto;
 .clipboard {
   cursor:pointer;
   height:1.6rem;
-  fill:#999;
+  // fill:#999;
   margin-left:1rem;
   &:hover {
     fill:#bbb;
@@ -288,6 +334,7 @@ margin:0 auto;
 }
 .clipboardButton {
   background-color:transparent;
+
   cursor:pointer;
   border:none;
   background-size:100%;
@@ -329,7 +376,7 @@ margin:0 auto;
   max-width:480px;
   margin:0 auto;
   align-items:center;
-  transition:width 0.5s, max-width 0.5s;
+  transition:width 0.5s, max-width 0.5s, opacity 0.2s;
   & p {
     visibility:hidden;
     height:0;
@@ -398,5 +445,20 @@ margin:0 auto;
     box-shadow:0px 0px 4px 4px  #eee inset;
     width:100%;
     height:100%;
+  }
+  &:hover {
+    background-color:#f9f9f9;
+  }
+}
+
+body {
+  width:100%;
+}
+@media (max-width:410px) {
+  #MainLogo {
+    transform:scale(0.7);
+  }
+  .subheaderText p{
+    padding:2rem 0.2rem;
   }
 }

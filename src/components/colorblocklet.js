@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react"
-import IconClipboard from "../images/svg/clipboard.svg"
+// import IconClipboard from "../images/svg/clipboard.svg"
+import IconClipboard from "../images/clipboard.png"
 
 const ColorBlocklet = ({ color1, color2, setter1, setter2 }) => {
   let copyIndicator = useRef(null)
@@ -35,7 +36,9 @@ const ColorBlocklet = ({ color1, color2, setter1, setter2 }) => {
             }, 1500)
           }}
         >
-          <IconClipboard />
+        <img src={IconClipboard} style={{
+            marginBottom:'0'
+          }} />
 
           <div className="clipboardConfirmation" ref={copyIndicator}>
             Copied!
@@ -55,7 +58,9 @@ const ColorBlocklet = ({ color1, color2, setter1, setter2 }) => {
             }, 1500)
           }}
         >
-          <IconClipboard />
+        <img src={IconClipboard} style={{
+            marginBottom:'0'
+          }} />
 
           <div className="clipboardConfirmation" ref={copyIndicator2}>
             Copied!

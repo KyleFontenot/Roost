@@ -5,8 +5,8 @@ import SEO from "./seo"
 
 // import { Link } from 'gatsby'
 // import Img from 'gatsby'
-import "./layout.scss"
-import "./custom.scss"
+// import "./layout.scss"
+// import "./custom.scss"
 
 const Header = primaryColor => {
   return (

@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Fontenot <kylewilliamfontenot@gmail.com",
   "dependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.9.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -13,6 +14,7 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sass": "^3.0.0",
     "gatsby-plugin-sharp": "^2.8.0",
+    "gatsby-plugin-styled-components": "^3.10.0",
     "gatsby-source-filesystem": "^2.11.0",
     "gatsby-transformer-json": "^2.9.0",
     "gatsby-transformer-remark": "^2.16.0",
@@ -21,7 +23,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "sass": "^1.32.4"
+    "sass": "^1.32.4",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "prettier": "2.2.1"

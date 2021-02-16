@@ -28,7 +28,11 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
-
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
