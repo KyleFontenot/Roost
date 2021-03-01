@@ -1,12 +1,15 @@
 import React, { useState, useRef } from "react"
 import Header from "../components/header"
+import RandomizerButton from '../components/randomizerButton'
+import FontBlocklet from '../components/FontBlocklet'
+// import PDFbutton from "../components/PDFbutton"
 import adjectiveArray from "../components/storage"
 import ColorBlocklet from "../components/colorblocklet"
-// import IconClipboard from "../images/svg/clipboard.svg"
+import IconGithub from '../images/GitHub-Mark-64px.png'
+import FontSpaceMono from '../components/fonts/SpaceMono-Regular.ttf'
 
-// import TwoPass from "../components/twopass"
-// import '../components/layout.scss'
-// import '../components/custom.scss'
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer'
+
 
 const IndexPage = () => {
   const infobox = useRef(null)
@@ -14,10 +17,10 @@ const IndexPage = () => {
   const [primaryShade, setPrimaryShade] = useState("#8ec933")
   const [secondaryColor, setSecondary] = useState("#eeaabf")
   const [secondaryShade, setSecondaryShade] = useState("#aa778b")
-  const [fontPrimary, setFontPrimary] = useState("Work Sans")
-
   const [adjectiveFirst, setadjectiveFirst] = useState("???")
   const [adjectiveSecond, setadjectiveSecond] = useState("???")
+  const [fontPrimary, setFontPrimary] = useState("Work Sans")
+  const [fontSecondary, setFontSecondary] = useState("Work Sans")
 
   function randomAdjectiveFirst() {
     setadjectiveFirst(
@@ -36,7 +39,9 @@ const IndexPage = () => {
         id="wrapper"
         style={{
           backgroundColor: primaryColor,
-          transition: "background-color 1.2s",
+
+          background:`linear-gradient(to bottom right, ${primaryColor} 30%, ${secondaryColor})`,
+          transition: "background 1.2s",
         }}
       ></div>
       <div id="wrapperAccent"></div>
@@ -44,16 +49,15 @@ const IndexPage = () => {
       <main>
         <div
           className="block subheader "
-          onClick={() => {
+          ref={infobox}
+        >
+          <div className="infobox" onClick={() => {
             if (infobox.current.classList.contains("subheaderExpand")) {
               infobox.current.classList.remove("subheaderExpand")
             } else {
               infobox.current.classList.add("subheaderExpand")
             }
-          }}
-          ref={infobox}
-        >
-          <div className="infobox">
+          }}>
             <span className="subheaderArrows">&#9660;</span>
             <span className="speciali">i</span>
             <span className="subheaderArrows">&#9660;</span>
@@ -64,10 +68,36 @@ const IndexPage = () => {
               Roost is a simple way to generate a quick idea for an overall web
               aesthetic. Use it for CodePens, use it for practicing layout
               development, use it for composing your next email, using it for
-              flexing that right-brain of yours.{" "}
+              flexing that right-brain of yours.
             </p>
+            <p style={{textAlign:'center'}}><a href="https://github.com/KyleFontenot" target="__blank">
+              <img src={IconGithub} height="32px" style={{
+                  marginRight:'1rem',
+                  marginBottom:'-0.5rem'
+                }}/>
+              KyleFontenot
+            </a>
+            <span style={{fontSize: '1.3rem'}}> / </span>
+            <a href="https://github.com/KyleFontenot/Roost" target="__blank">Roost</a></p>
           </div>
         </div>
+
+
+        <RandomizerButton
+          color1={primaryColor}
+          color2={primaryShade}
+          setter1={setPrimary}
+          setter2={setPrimaryShade}
+          adj1={adjectiveFirst}
+          adj2={adjectiveSecond}
+          setter3={setadjectiveFirst}
+          setter4={setadjectiveSecond}
+          font1={fontPrimary}
+          font2={fontSecondary}
+          setter5={setFontPrimary}
+          setter6={setFontSecondary}
+
+        />
 
         <div className="block ">
           <div className="row">
@@ -140,126 +170,130 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <div className="block ">
+        <FontBlocklet
+          font1={fontPrimary}
+          setter1={setFontPrimary}
+          font2={fontSecondary}
+          setter2={setFontSecondary}
+          />
+
+        <div className="hr"></div>
+
+        <div className="block" id="summary">
+          <h2 style={{
+              textAlign:'center',
+
+            }}>Summed Up:</h2>
           <div className="row">
+
             <div className="column ">
-              <div className="row">
-
-                <div className="column swatchFontDisplay">
-                  <div className="swatch" style={{
-
-                      padding:'2rem 0',
-                      display:'block',
-                      margin:'0 auto',
-                      height:'100%'
-                    }}>
-                    <h2>Heading 1</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                  </div>
-                </div>
-
-                <div className="column ">
-                  <div className="swatch swatchFont text-center">
-                    <span className="swatchFontHeader">
-                      {fontPrimary}
-                    </span>
-
-                    <span className="">
-                      {fontPrimary}
-                    </span>
-                  </div>
-                </div>
+              <div className="swatch swatchFont text-center" style={{
+                  backgroundColor:primaryColor
+                }}>
+              </div>
+              <div className="swatch swatchFont text-center" style={{
+                  backgroundColor:secondaryColor
+                }}>
+              </div>
+            </div>
+            <div className="column ">
+              <div className="swatch swatchText text-center"
+                style={{fontSize:'1.3rem'}}>
+                {adjectiveFirst}
+              </div>
+              <div className="swatch swatchText text-center" style={{fontSize:'1.3rem'}}>
+                {adjectiveSecond}
               </div>
 
-              <div className="row">
-                <div className="column">
-                  <button className="button" style={{ marginTop: "4rem" }}>
-                    Change Font 1
-                  </button>
-                </div>
-                <div className="column">
-                  <button className="button" style={{ marginTop: "4rem" }}>
-                    Change Font 2
-                  </button>
-                </div>
-              </div>
+            </div>
+            <div className="column ">
+              <div className="swatch swatchFont text-center" style={{height:'100%'}}>
+								<span className='swatchFontHeader' style={{
+									fontFamily:fontPrimary,
+									fontSize:'1.8rem',
+                  maxWidth:'100%'
+								}} >
+									{fontPrimary}
+								</span>
 
+								<span className="" style={{
+									fontFamily:fontSecondary
+								}} >
+									{fontSecondary}
+								</span>
+							</div>
 
             </div>
           </div>
         </div>
-        <input type="text" default="email@gmail.com" id="userEmail"/>
-        <button
-          className="button"
-          style={{
-            marginTop: "2rem",
-            marginBottom: "6rem",
-            backgroundColor: "blue",
-            color: "white",
-            fontWeight: "bold",
-            fontSize: "1.5rem",
-          }}
-          onClick={() => {
-            var emailMade = `mailto:${document.getElementById('userEmail').value}`
-             + "&subject=" + encodeURIComponent("Aesthetic made by Roost")
-             + "&body=" + encodeURIComponent(primaryColor) + encodeURIComponent(primaryShade) + encodeURIComponent(secondaryColor) +
-             encodeURIComponent(secondaryShade) +
-             encodeURIComponent(adjectiveFirst) +
-             encodeURIComponent(adjectiveSecond);
-            window.location.href = emailMade;
-          }}
-        >
 
 
-          Email to self
-        </button>
+          <PDFDownloadLink document={<MyDoc
+              color1={primaryColor}
+              shade1={primaryShade}
+              color2={secondaryColor}
+              shade2={secondaryShade}
+              adjective1={adjectiveFirst}
+              adjective2={adjectiveSecond}
+              font1={fontPrimary}
+              font2={fontSecondary}
+                />} fileName="RoostSummary.pdf"
+              className="actionButton" style={{marginBottom:'8rem'}}>
+          {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download PDF')}
+        </PDFDownloadLink>
+
       </main>
     </div>
   )
 }
+// const source = '../components/fonts/SpaceMono-Regular.ttf';
+Font.register({ family: 'SpaceMono', src: FontSpaceMono });
+const styles = StyleSheet.create({
+  page: {
+    flexDirection: 'column',
+    padding: 30
+  },
+  section: {
+    padding: 10,
+    flexGrow: 1,
+    fontFamily:'SpaceMono',
+    border:3
+  },
+  text: {
+    margin: 2,
+    padding: 5,
+    textAlign: 'center'
+  }
+});
 
-export default IndexPage
-// <div className="clipboardConfirmation">Copied</div>
+const MyDoc = ({color1, color2, shade1, shade2, adjective1, adjective2, font1, font2}) => (
 
-// <h2 className="swatchlabel text-center">
-//   {primaryColor}
-//
-//   <button className="clipboardButton" onClick={() => {
-//       navigator.clipboard.writeText(primaryColor);
-//     }} >
-//     <IconClipboard />
-//     <div className="clipboardConfirmation">Copied!</div>
-//   </button>
-//   </h2>
-//
-// <h2 className="swatchlabel shadelabel text-center" >
-//   {primaryShade}
-// </h2>
-//
-// <button onClick={randomHexPrimary} className="button">Change Primary Color</button>
 
-// Levit show-on-slide
-//   const showElementsCutoff = window.innerHeight * 0.7;
-//   const containerLevits = document.getElementsByClassName('block');
-//   let domOffsets = [];
-//   window.setTimeout(() => {
-//     for (let i = 0;i < containerLevits.length; i++){
-//       domOffsets.push(containerLevits[i].offsetTop);
-//     }
-//   },1);
-//
-//   window.addEventListener("scroll", function scrollBehavior() {
-//     let tick = window.scrollY;
-//         for (let j = 0; j < domOffsets.length; j++) {
-//
-//           if (tick >= domOffsets[j] - showElementsCutoff){
-//             containerLevits[j].classList.remove('hide');
-//           }
-//           else if (tick < domOffsets[j] - 50){
-//             containerLevits[j].classList.add('hide');
-//           }
-//           else if (tick + showElementsCutoff < domOffsets[j] - 50){
-//             containerLevits[j].classList.add('hide');
-//           }
-//         }
-//   });
+  <Document style={styles.document}>
+    <Page size="B5" style={[styles.page,
+        {backgroundColor:color1,
+          boxShadow:'-6px 6px 0 #000'
+        }]}>
+      <View style={[styles.section, {
+          backgroundColor:'white',
+          borderTopLeftRadius:12,
+          borderTopRightRadius:12,
+          borderBottomLeftRadius:12,
+          borderBottomRightRadius:12,
+          paddingTop:50,
+          width:'100%',
+        }]}>
+        <Text style={styles.text}>Primary Color:   {color1}</Text>
+        <Text style={[styles.text, {marginBottom:'30px'}]}>Primary Shade:   {shade1}</Text>
+        <Text style={styles.text}>Secondary Color:   {color2}</Text>
+        <Text style={[styles.text, {marginBottom:'30px'}]}>Secondary Shade:   {shade2}</Text>
+        <Text style={styles.text}>First Adjective:   {adjective1}</Text>
+        <Text style={[styles.text, {marginBottom:'30px'}]}>Second Adjective:   {adjective2}</Text>
+        <Text style={styles.text}>First Font:   {font1}</Text>
+        <Text style={styles.text}>Second Font:   {font2}</Text>
+      </View>
+    </Page>
+  </Document>
+)
+
+export default IndexPage;

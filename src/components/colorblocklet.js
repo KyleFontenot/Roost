@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react"
-// import IconClipboard from "../images/svg/clipboard.svg"
-import IconClipboard from "../images/clipboard.png"
+import IconClipboard from "../images/svg/clipboard.svg"
+// import IconClipboard from "../images/clipboard.png"
+import CopyToClipboard from '../components/copyToClipboard'
 
 const ColorBlocklet = ({ color1, color2, setter1, setter2 }) => {
-  let copyIndicator = useRef(null)
+
   let copyIndicator2 = useRef(null)
 
   function randomHexPrimary() {
@@ -26,49 +27,17 @@ const ColorBlocklet = ({ color1, color2, setter1, setter2 }) => {
       <h2 className="swatchlabel text-center">
         {color1}
 
-        <button
-          className="clipboardButton"
-          onClick={() => {
-            navigator.clipboard.writeText(color1)
-            copyIndicator.current.style.opacity = "1"
-            setTimeout(() => {
-              copyIndicator.current.style.opacity = "0"
-            }, 1500)
-          }}
-        >
-        <img src={IconClipboard} style={{
-            marginBottom:'0'
-          }} />
-
-          <div className="clipboardConfirmation" ref={copyIndicator}>
-            Copied!
-          </div>
-        </button>
+        <CopyToClipboard color={color1}/>
       </h2>
 
       <h2 className="swatchlabel shadelabel text-center">
         {color2}
-        <button
-          className="clipboardButton"
-          onClick={() => {
-            navigator.clipboard.writeText(color2)
-            copyIndicator2.current.style.opacity = "1"
-            setTimeout(() => {
-              copyIndicator2.current.style.opacity = "0"
-            }, 1500)
-          }}
-        >
-        <img src={IconClipboard} style={{
-            marginBottom:'0'
-          }} />
 
-          <div className="clipboardConfirmation" ref={copyIndicator2}>
-            Copied!
-          </div>
-        </button>
+        <CopyToClipboard color={color2}/>
       </h2>
 
-      <button onClick={randomHexPrimary} className="button">
+      <button onClick={randomHexPrimary} className="button"
+        style={{marginTop:'1rem'}}>
         Change Primary Color
       </button>
     </React.Fragment>

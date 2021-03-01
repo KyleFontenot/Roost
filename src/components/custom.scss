@@ -3,8 +3,6 @@
 @import './font-SpaceMono.css';
 $color-1: #B2FC40;
 
-
-
 h1, h2, h3 {
   font-family: "Lorano", sans-serif;
 }
@@ -17,12 +15,15 @@ h2 {
   font-size:1.3rem;
   letter-spacing:2px;
 }
-
-body{
+html {
   scroll-behavior:smooth;
+}
+body{
+
   // max-width:100%;
   // overflow:hidden;
   width:100%;
+  margin-bottom:6rem;
 }
 *{
   z-index:10;
@@ -31,19 +32,54 @@ body{
 }
 html, body {
 
-  max-width: 100%;
+max-width: 100%;
+}
+a {
+  color:blue;
+  font-size:1.2rem;
+}
+body {
+  // background:linear-gradient(-40deg, transparent 20px, blue 20px, blue 30px, purple 30px, purple);
+  // background-size:250px;
+  // background-position:200% 20px;
+  // min-height:200px;
+  // background-repeat:repeat;
+  // z-index:-1;
 }
 #wrapper {
   height:110%;
   width:100%;
+  // position:fixed;
   position:fixed;
   top:0;
   left:0;
   z-index:-1;
   overflow:hidden;
   background:url('../images/smalldash.png');
-  background-size:4rem;
+  background-size:6rem;
   background-position:right;
+  z-index:-2;
+
+  // background:linear-gradient(-45deg, transparent 10px, #000 10px, #000 18px, transparent 18px, transparent);
+  // background-size:200px 200px;
+  // background-position:100% 50%;
+  // height:100%;
+  // // width:2000px;
+  // min-height:400px;
+  // background-repeat:round;
+}
+#wrapper::after {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:url('../images/smalldash.png');
+  background-size:6rem;
+  background-position:right;
+  z-index:-1;
 }
 #wrapperAccent::before, #wrapperAccent::after, {
   content:" ";
@@ -142,7 +178,9 @@ box-shadow:-5px 5px 0 #000;
 
 }
 
-
+.column.center {
+  text-align:center;
+}
 @keyframes mainLogoSpin {
   0% {
   opacity:0;
@@ -195,6 +233,7 @@ main {
 padding:0 3% 0 calc(3% + 8px);
 max-width:1280px;
 margin:0 auto;
+z-index:20;
 }
 .block {
   background-color:white!important;
@@ -216,7 +255,7 @@ margin:0 auto;
   height:8rem;
   display:block;
   border:2px solid #000;
-  margin:0 auto;
+  margin:10px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -271,8 +310,10 @@ margin:0 auto;
   flex-flow:column;
   align-items:space-around;
   align-content:space-around;
-  width:90%;
-  height:100%;
+  width:95%;
+  padding-top:1.5rem;
+  padding-bottom:1.5rem;
+
   & span {
     font-size:0.9rem;
   }
@@ -284,6 +325,13 @@ margin:0 auto;
     padding-bottom:1rem;
     border-bottom:2px dashed #000;
   }
+}
+.fontlinks {
+  font-size:0.9rem;
+  text-align:center;
+  margin:0 auto;
+  display:inline-block;
+  position:relative;
 }
 .swatchFontHeader {
   font-size:1.5rem;
@@ -304,13 +352,16 @@ margin:0 auto;
   width:60%;
   margin:1rem auto;
   position:relative;
-  left:20%;
+  text-align:center;
+  display:block;
   background-color:white;
   border-radius:10px;
   border:2px solid #000;
   box-shadow:-5px 5px 0 #333;
   padding:1rem;
   transition:background-color 0.2s;
+  text-decoration:none;
+  color:black;
   &:hover {
     background-color:#eee;
     cursor:pointer;
@@ -319,6 +370,20 @@ margin:0 auto;
     outline:4px dashed #666;
     outline-offset:-6px;
   }
+}
+.actionButton {
+  background-color:blue;
+  color:white;
+  font-size:1.4rem;
+  padding:1rem 2rem;
+  box-shadow:-6px 6px 0 #000;
+  border-radius:12px;
+  border:2px solid #000;
+  margin:3rem auto;
+  display:block;
+  text-align:center;
+  width:60%;
+  text-decoration:none;
 }
 .block .column {
   margin-bottom:1rem;
@@ -386,7 +451,7 @@ margin:0 auto;
     font-size:0.9rem;
     opacity:0;
     border-top:2px dashed #fff;
-    transition: opacity 0.2s, border-top 0.3s;
+    transition: opacity 0.2s, border-top 0.3s, width 0.2s, height 0.2s;
   }
 }
 .subheaderExpand {
@@ -450,9 +515,10 @@ margin:0 auto;
     background-color:#f9f9f9;
   }
 }
-
-body {
-  width:100%;
+.hr {
+  width:80%;
+  border-bottom:4px dashed #000;
+  margin: 4rem auto 0rem;
 }
 @media (max-width:410px) {
   #MainLogo {

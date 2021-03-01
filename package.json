@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Fontenot <kylewilliamfontenot@gmail.com",
   "dependencies": {
+    "@react-pdf/renderer": "^1.6.13",
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.9.0",

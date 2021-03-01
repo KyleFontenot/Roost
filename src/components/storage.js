@@ -22,4 +22,5 @@ const adjectiveArray = [
   "Dissonant",
 ];
 
+
 export default adjectiveArray;
