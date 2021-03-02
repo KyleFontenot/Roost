@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import Header from "../components/header"
 import RandomizerButton from '../components/randomizerButton'
 import FontBlocklet from '../components/FontBlocklet'
@@ -21,6 +21,11 @@ const IndexPage = () => {
   const [adjectiveSecond, setadjectiveSecond] = useState("???")
   const [fontPrimary, setFontPrimary] = useState("Work Sans")
   const [fontSecondary, setFontSecondary] = useState("Work Sans")
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   function randomAdjectiveFirst() {
     setadjectiveFirst(
@@ -227,7 +232,7 @@ const IndexPage = () => {
           </div>
         </div>
 
-
+        {isClient && (
           <PDFDownloadLink document={<MyDoc
               color1={primaryColor}
               shade1={primaryShade}
@@ -241,7 +246,7 @@ const IndexPage = () => {
               className="actionButton" style={{marginBottom:'8rem'}}>
           {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download PDF')}
         </PDFDownloadLink>
-
+      )}
       </main>
     </div>
   )
