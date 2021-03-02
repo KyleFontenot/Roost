@@ -57,7 +57,6 @@ export default function HTML(props) {
   }}
 />
       </body>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
 
     </html>

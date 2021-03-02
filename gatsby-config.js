@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Kyle's Starter`,
-    description: `This is a starter configuration to hit the ground running with Kyle's beginning preferences.`,
+    title: `Roost`,
+    description: `A simple tool for web designers to quickly generate an aesthetic.`,
     author: `Kyle Fontenot`,
   },
   plugins: [
