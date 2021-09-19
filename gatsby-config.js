@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/Roost",
   siteMetadata: {
     title: `Roost`,
     description: `A simple tool for web designers to quickly generate an aesthetic.`,
