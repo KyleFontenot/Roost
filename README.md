@@ -12,7 +12,7 @@ Roost is a simple way to generate a quick idea for an overall web aesthetic. Use
 # Features
 Randomly generate:
 * two colors 
-* two deign adjectives
+* two design adjectives
 * two Google Fonts
 
 Either select the Randomizer for a complete random set, or go through each option. Afterward, copy your results or simply download your results into a PDF for safe-keeping.
